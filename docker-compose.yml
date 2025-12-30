@@ -1,0 +1,39 @@
+services:
+  backend:
+    image: bee000092/switch-testbed-backend:latest
+    env_file:
+      - ./config/backend.env
+    environment:
+      - CONFIG_DIR=/app/config
+      - CREDENTIALS_PATH=/app/secrets/credentials.yaml
+    container_name: switch-testbed-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./config/base:/app/config:ro
+      - ./config/secrets:/app/secrets:ro
+    cap_add:
+      - NET_RAW
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  frontend:
+    image: bee000092/switch-testbed-frontend:latest
+    env_file:
+      - ./config/frontend.env
+    container_name: switch-testbed-frontend
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+networks:
+  default:
+    name: switch-testbed-network

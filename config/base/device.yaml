@@ -1,0 +1,63 @@
+# Example device inventory for production
+# Replace entries with your real devices; keep structure vendor -> model -> version -> list
+cisco:
+  c8k:
+    "17.09.05e":
+      - serial: "97SQ3QZXPHF"
+        mgmt_ip: "10.192.4.181"
+        port: 22
+        hostname: "switch1"
+        default_gateway: "10.192.4.1"
+        netmask: "255.255.255.0"
+      
+      - serial: "9EET8R3N8UN"
+        mgmt_ip: "10.192.4.182"
+        port: 22
+        hostname: "switch2"
+        default_gateway: "10.192.4.1"
+        netmask: "255.255.255.0"
+
+  n9k:
+    "9.3(13)":
+      - serial: "9XHJVKZ7XMR"
+        mgmt_ip: "10.192.4.183"
+        port: 22
+        hostname: "switch3"
+        default_gateway: "10.192.4.1"
+        netmask: "255.255.255.0"
+      - serial: "934GG1QCI6D"
+        mgmt_ip: "10.192.4.184"
+        port: 22
+        hostname: "switch4"
+        default_gateway: "10.192.4.1"
+        netmask: "255.255.255.0"
+  xrv:
+    "7.4.2":
+      - serial: "A0552319593"
+        mgmt_ip: "10.192.4.185"
+        port: 22
+        hostname: "switch5"
+        default_gateway: "10.192.4.1"
+        netmask: "255.255.255.0"
+      - serial: "79CED161094"
+        mgmt_ip: "10.192.4.186"
+        port: 22
+        hostname: "switch6"
+        default_gateway: "10.192.4.1"
+        netmask: "255.255.255.0"
+
+hp:
+  "5945":
+    "7.1.070":
+      - serial: "SERIAL_123"
+        mgmt_ip: "10.192.197.201"
+        port: 22
+        hostname: "hp-switch1"
+        default_gateway: "10.192.197.1"
+        netmask: "255.255.255.0"
+      - serial: "CN2AK8302P"
+        mgmt_ip: "10.192.197.202"
+        port: 22
+        hostname: "hp-switch2"
+        default_gateway: "10.192.197.1"
+        netmask: "255.255.255.0"
